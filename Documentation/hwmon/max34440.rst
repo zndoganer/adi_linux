@@ -173,7 +173,7 @@ curr[1-6]_reset_history	Write any value to reset history.
     - in6 and curr6 attributes only exist for MAX34440.
     - MAX34446 only supports curr[1-4].
     - For ADPM12160, and ADPM12200, curr[1] is "iin1" and curr[2-6]
-      are "iout[1-5].
+      are "iout[1-5]".
 
 Power
 ~~~~~
