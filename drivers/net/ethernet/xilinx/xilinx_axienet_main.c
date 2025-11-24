@@ -48,7 +48,8 @@
 #include <linux/clk.h>
 #include <linux/ptp/ptp_xilinx.h>
 #include <linux/workqueue.h>
-
+#include <linux/gpio/consumer.h>
+#include <linux/err.h>
 #include "xilinx_axienet.h"
 
 /* Descriptors defines for Tx and Rx DMA */
@@ -3441,8 +3442,7 @@ rst_gpio = devm_gpiod_get(&pdev->dev, "reset",GPIOD_OUT_HIGH);
 
 if (IS_ERR(rst_gpio)) 
 {
-	err = PTR_ERR(rst_gpio);
-	if (err == -EPROBE_DEFER)
+	if (PTR_ERR(rst_gpio) == -EPROBE_DEFER)
 		dev_info(&pdev->dev,"Probe deferred due to GPIO reset defer\n");
         else
 		dev_err(&pdev->dev,"Unable to locate reset property in dt\n");
