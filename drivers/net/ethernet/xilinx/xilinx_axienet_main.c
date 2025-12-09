@@ -95,17 +95,16 @@ EXPORT_SYMBOL(mrmac_pll_reg);
 
 int mrmac_pll_rst;
 EXPORT_SYMBOL(mrmac_pll_rst);
-
+/*
 struct gpio_desc *rst_gpio;
 static void xilinx_qpll_reset(struct gpio_desc *chan)
 {
-	/* reset ip */
 	gpiod_set_value(chan, 0);
 	mdelay(100);
 	gpiod_set_value(chan, 1);
 	mdelay(100);
 };
-
+*/
 /* Option table for setting up Axi Ethernet hardware options */
 static struct axienet_option axienet_options[] = {
 	/* Turn on jumbo packet support for both Rx and Tx */
@@ -3437,7 +3436,7 @@ static int axienet_probe(struct platform_device *pdev)
 	u8 mac_addr[ETH_ALEN];
 	struct resource *ethres;
 	u32 value;
-
+/*
 rst_gpio = devm_gpiod_get(&pdev->dev, "reset",GPIOD_OUT_HIGH);
 
 if (IS_ERR(rst_gpio)) 
@@ -3449,7 +3448,7 @@ if (IS_ERR(rst_gpio))
 }
 
 xilinx_qpll_reset(rst_gpio);
-
+*/
 #ifdef CONFIG_XILINX_AXI_EMAC_HWTSTAMP
 	struct resource txtsres, rxtsres;
 #endif
